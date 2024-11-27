@@ -536,6 +536,13 @@ abstract class AbstractBoleto implements BoletoContract
         return $this->codigoBanco;
     }
 
+    public function setRawCodigoBarras($codigo_barras)
+    {
+        $this->campoCodigoBarras = $codigo_barras;
+
+        return $this;
+    }
+
     /**
      * Define o número da conta
      *

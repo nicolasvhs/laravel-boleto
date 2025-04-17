@@ -96,7 +96,8 @@ class Itau extends AbstractBoleto implements BoletoContract
      */
     public function getNossoNumeroBoleto()
     {
-        return $this->getCarteira() . '/' . substr_replace($this->getNossoNumero(), '-', -1, 0);
+        // return $this->getCarteira() . '/' . substr_replace($this->getNossoNumero(), '-', -1, 0);
+        return $this->getNumero();
     }
     /**
      * Método para gerar o código da posição de 20 a 44

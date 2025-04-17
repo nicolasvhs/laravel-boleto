@@ -543,6 +543,25 @@ abstract class AbstractBoleto implements BoletoContract
         return $this;
     }
 
+    public function setRawLinhaDigitavel($linhaDigitavel)
+    {
+        $this->campoLinhaDigitavel = $this->parseLinhaDigitavel($linhaDigitavel);
+
+        return $this;
+    }
+
+    public function parseLinhaDigitavel($linhaDigitavel) {
+        $linha = preg_replace('/\D/', '', $linhaDigitavel);
+    
+        $campo1 = substr($linhaDigitavel, 0, 5) . '.' . substr($linhaDigitavel, 5, 5);
+        $campo2 = substr($linhaDigitavel, 10, 5) . '.' . substr($linhaDigitavel, 15, 6);
+        $campo3 = substr($linhaDigitavel, 21, 5) . '.' . substr($linhaDigitavel, 26, 6);
+        $campo4 = substr($linhaDigitavel, 32, 1);
+        $campo5 = substr($linhaDigitavel, 33, 14);
+    
+        return "$campo1 $campo2 $campo3 $campo4 $campo5";
+    }
+
     /**
      * Define o número da conta
      *
